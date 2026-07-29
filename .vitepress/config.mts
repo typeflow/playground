@@ -1,10 +1,12 @@
 import { defineConfig } from 'vitepress';
 
-// Bare paths, not full URLs: docs and playground share the same origin
-// (typeflow.github.io) at different subpaths, so VitePress treats these as
-// internal links and skips its automatic target="_blank" for external links.
-const DOCS_SITE = '/docs/';
-const DOCS_SITE_FR = '/docs/fr/';
+// Must be full URLs: VitePress applies withBase() to any link that isn't
+// externally-qualified, which would turn a bare '/docs/' into
+// '/playground/docs/'. Being a full URL also makes VitePress treat it as
+// external (target="_blank") — theme/index.ts strips that back off for
+// same-origin (typeflow.github.io) links once the page mounts.
+const DOCS_SITE = 'https://typeflow.github.io/docs/';
+const DOCS_SITE_FR = 'https://typeflow.github.io/docs/fr/';
 
 export default defineConfig({
   title: 'Typeflow Playground',
