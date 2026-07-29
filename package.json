@@ -15,7 +15,7 @@
     "preview": "vitepress preview ."
   },
   "dependencies": {
-    "typeflowjs": "^0.0.1"
+    "typeflowjs": "^0.0.2"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
