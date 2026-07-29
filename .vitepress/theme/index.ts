@@ -7,32 +7,27 @@ import { type Theme } from 'vitepress';
 // path would get base-prefixed to '/playground/docs/' by VitePress's own
 // link normalizer). Being a full URL makes VitePress treat it as external
 // and add target="_blank"; since it's actually the same origin
-// (typeflow.github.io) at runtime, strip that back off.
-function openCrossSiteLinksInSameTab(): void {
-  for (const a of document.querySelectorAll<HTMLAnchorElement>(
+// (typeflow.github.io) at runtime, open it in the same tab instead.
+// Intercepted at click time (capture phase, before the browser acts on
+// target="_blank") rather than patched on mount/navigation, so it doesn't
+// race Vue's hydration.
+function openCrossSiteLinksInSameTab(e: MouseEvent): void {
+  const a = (e.target as HTMLElement | null)?.closest?.(
     'a[target="_blank"]',
-  )) {
-    if (a.hostname === location.hostname) {
-      a.removeAttribute('target');
-      a.removeAttribute('rel');
-    }
+  ) as HTMLAnchorElement | null;
+  if (a && a.hostname === location.hostname) {
+    a.removeAttribute('target');
+    a.removeAttribute('rel');
   }
 }
 
 export default {
   extends: DefaultTheme,
-  enhanceApp({ app, router }) {
+  enhanceApp({ app }) {
     app.component('Playground', Playground);
 
     if (typeof window !== 'undefined') {
-      const previous = router.onAfterRouteChanged;
-      router.onAfterRouteChanged = async (to) => {
-        await previous?.(to);
-        requestAnimationFrame(() =>
-          requestAnimationFrame(openCrossSiteLinksInSameTab),
-        );
-      };
-      requestAnimationFrame(openCrossSiteLinksInSameTab);
+      document.addEventListener('click', openCrossSiteLinksInSameTab, true);
     }
   },
 } satisfies Theme;
