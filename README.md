@@ -29,14 +29,14 @@ framework-independent app.
 
 ## Layout
 
-| Path                          | Role                                              |
-| ------------------------------ | -------------------------------------------------- |
-| `index.md`, `fr/index.md`     | The single page (per locale), rendering `<Playground />` |
-| `.vitepress/theme/Playground.vue` | The playground itself (toolbar, editors, diagnostics, share) |
-| `.vitepress/theme/CodeEditor.vue` | Shared textarea + syntax-highlighted backdrop     |
-| `.vitepress/theme/highlight.ts` | Typeflow/JSON syntax highlighting (uses `typeflowjs`'s lexer) |
-| `.vitepress/theme/share.ts`     | Encodes/decodes playground state into a URL hash  |
-| `.vitepress/theme/demo-functions.ts` | Demo `use`-function implementations for examples |
+| Path                                 | Role                                                          |
+| ------------------------------------ | ------------------------------------------------------------- |
+| `index.md`, `fr/index.md`            | The single page (per locale), rendering `<Playground />`      |
+| `.vitepress/theme/Playground.vue`    | The playground itself (toolbar, editors, diagnostics, share)  |
+| `.vitepress/theme/CodeEditor.vue`    | Shared textarea + syntax-highlighted backdrop                 |
+| `.vitepress/theme/highlight.ts`      | Typeflow/JSON syntax highlighting (uses `typeflowjs`'s lexer) |
+| `.vitepress/theme/share.ts`          | Encodes/decodes playground state into a URL hash              |
+| `.vitepress/theme/demo-functions.ts` | Demo `use`-function implementations for examples              |
 
 `CodeEditor.vue`, `highlight.ts`, `share.ts` and `demo-functions.ts` are
 duplicated from [`typeflow/docs`](https://github.com/typeflow/docs), which
