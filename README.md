@@ -8,7 +8,10 @@ diagnostics update live. Deployed to
 
 Also embedded inline throughout [the docs](https://github.com/typeflow/docs)
 via a smaller `MiniPlayground` component — this repo is the full standalone
-page (toolbar, share links, diagnostics panel).
+page (toolbar, share links, diagnostics panel). Available in English
+(`/`) and French (`/fr/`) — `Playground.vue`'s toolbar labels are already
+bilingual (driven by VitePress's `useData().lang`), `.vitepress/config.mts`
+just needed the matching `locales` entries.
 
 ## Development
 
@@ -28,7 +31,7 @@ framework-independent app.
 
 | Path                          | Role                                              |
 | ------------------------------ | -------------------------------------------------- |
-| `index.md`                    | The single page, rendering `<Playground />`       |
+| `index.md`, `fr/index.md`     | The single page (per locale), rendering `<Playground />` |
 | `.vitepress/theme/Playground.vue` | The playground itself (toolbar, editors, diagnostics, share) |
 | `.vitepress/theme/CodeEditor.vue` | Shared textarea + syntax-highlighted backdrop     |
 | `.vitepress/theme/highlight.ts` | Typeflow/JSON syntax highlighting (uses `typeflowjs`'s lexer) |
