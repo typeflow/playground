@@ -1,5 +1,11 @@
 import { defineConfig } from 'vitepress';
 
+// Bare paths, not full URLs: docs and playground share the same origin
+// (typeflow.github.io) at different subpaths, so VitePress treats these as
+// internal links and skips its automatic target="_blank" for external links.
+const DOCS_SITE = '/docs/';
+const DOCS_SITE_FR = '/docs/fr/';
+
 export default defineConfig({
   title: 'Typeflow Playground',
   description: 'Try Typeflow live in your browser.',
@@ -22,7 +28,7 @@ export default defineConfig({
       description: 'Essayez Typeflow en direct dans votre navigateur.',
       themeConfig: {
         nav: [
-          { text: 'Docs', link: 'https://typeflow.github.io/docs/fr/' },
+          { text: 'Docs', link: DOCS_SITE_FR },
           { text: 'GitHub', link: 'https://github.com/typeflow/typeflow' },
         ],
       },
@@ -31,7 +37,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.svg',
     nav: [
-      { text: 'Docs', link: 'https://typeflow.github.io/docs/' },
+      { text: 'Docs', link: DOCS_SITE },
       { text: 'GitHub', link: 'https://github.com/typeflow/typeflow' },
     ],
     socialLinks: [
