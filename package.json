@@ -1,0 +1,28 @@
+{
+  "name": "@typeflowjs/playground",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Standalone interactive Typeflow playground",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/typeflow/playground"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "preview": "vitepress preview ."
+  },
+  "dependencies": {
+    "typeflowjs": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.5.0",
+    "vitepress": "^1.6.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
