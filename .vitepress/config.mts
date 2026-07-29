@@ -1,13 +1,5 @@
 import { defineConfig } from 'vitepress';
 
-// Must be full URLs: VitePress applies withBase() to any link that isn't
-// externally-qualified, which would turn a bare '/docs/' into
-// '/playground/docs/'. Being a full URL also makes VitePress treat it as
-// external (target="_blank") — theme/index.ts strips that back off for
-// same-origin (typeflow.github.io) links once the page mounts.
-const DOCS_SITE = 'https://typeflow.github.io/docs/';
-const DOCS_SITE_FR = 'https://typeflow.github.io/docs/fr/';
-
 export default defineConfig({
   title: 'Typeflow Playground',
   description: 'Try Typeflow live in your browser.',
@@ -30,7 +22,7 @@ export default defineConfig({
       description: 'Essayez Typeflow en direct dans votre navigateur.',
       themeConfig: {
         nav: [
-          { text: 'Docs', link: DOCS_SITE_FR },
+          { text: 'Docs', link: 'https://typeflow.github.io/docs/fr/' },
           { text: 'GitHub', link: 'https://github.com/typeflow/typeflow' },
         ],
       },
@@ -39,7 +31,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.svg',
     nav: [
-      { text: 'Docs', link: DOCS_SITE },
+      { text: 'Docs', link: 'https://typeflow.github.io/docs/' },
       { text: 'GitHub', link: 'https://github.com/typeflow/typeflow' },
     ],
     socialLinks: [
